@@ -1,0 +1,24 @@
+version: "3"
+
+services:
+  postgresdb:
+    image: 'docker.io/bitnami/postgresql:12.2.0'
+    container_name: postgresdb
+    environment:
+      POSTGRES_HOST_AUTH_METHOD: trust
+      POSTGRES_USER: hrms
+      POSTGRES_PASSWORD: demo
+      POSTGRES_DB: hrms
+    ports:
+      - "5432:5432"
+    networks:
+      - demo
+
+#  hrms:
+#    image: 'ghcr.io/ssplushr/hrms-java:1.0'
+#    container_name: hrms
+#    networks:
+#      - demo
+
+networks:
+  demo:

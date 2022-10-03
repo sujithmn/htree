@@ -1,0 +1,236 @@
+application {
+  config {
+    packageName com.ssplus.hr
+    baseName hrms
+    applicationType microservice
+    databaseType sql
+  }
+  entities *
+}
+
+entity Organization {
+ modificationCounter Integer,
+ orgName String required unique, 
+ email String, 
+ phone String,
+ location String,
+ address String,
+ logo String,
+ defaultOrg Boolean
+}
+entity Branch{
+ modificationCounter Integer,
+ branchName String required,
+ branchHead String,
+ manager String,
+ location String,
+ address String
+}
+
+entity Department {
+ modificationCounter Integer,
+ deptName String required, 
+ deptHead String,
+}
+entity Designation{
+ modificationCounter Integer,
+ desigName String required
+}
+
+entity Locale{
+  modificationCounter Integer,
+  locale String required,
+  dateFormat String,
+  timeFormat String,
+  financialStart String,
+  financialEnd String,
+}
+relationship OneToMany {
+	Organization to Branch
+    Organization to Department
+    Organization to Designation
+ 	Organization to Locale
+}
+
+entity Employee{
+  modificationCounter Integer,
+  employeeId String required unique,
+  employeeName String required,
+  sex String required,
+  maritalStatus String,
+  dateOfBirth LocalDate required,
+  nationalIdNumber String,
+  pan String,
+  bloodGroup String,
+  address String required,
+  email String required, 
+  phone String
+}
+
+relationship OneToMany {
+	Organization to Employee
+}
+
+entity EmployeeAccessSetting{
+  modificationCounter Integer,
+  empType String,
+  empStatus String,
+  badgeId String,
+  mobileAppAccess Boolean,
+  resigndate LocalDate,
+  joindate LocalDate
+}
+relationship OneToMany {
+  Organization to EmployeeAccessSetting
+}
+relationship OneToOne {
+  Employee to EmployeeAccessSetting
+}
+
+entity EmployeeShiftSetting{
+	modificationCounter Integer
+}
+relationship OneToMany {
+  Organization to EmployeeShiftSetting
+}
+relationship OneToOne {
+  Employee to EmployeeShiftSetting
+  Branch to EmployeeShiftSetting
+  Designation to EmployeeShiftSetting
+  Department to EmployeeShiftSetting
+}
+
+entity EmployeeLeaveTx{
+  modificationCounter Integer,
+  leaveAvailed Integer
+}
+relationship OneToMany {
+  Employee to EmployeeLeaveTx
+}
+entity EmployeePayrollSetting{
+  modificationcounter Integer,
+  basicpay Integer,
+  da Integer,
+  hra Integer,
+  medicalallowance Integer,
+  conveyanceallowance Integer,
+  transportallowance Integer,
+  specialallowance Integer,
+  mealallowance Integer,
+  bonus Integer,
+  pf Integer,
+  esi Integer,
+  pt Integer,
+  lwf Integer,
+  lta Integer,
+  employerpf Integer,
+  employeresi Integer
+}
+
+relationship OneToOne {
+  Employee to EmployeePayrollSetting
+}
+relationship OneToMany {
+  Organization to EmployeeShiftSetting
+}
+entity SalaryTx{
+  modificationcounter Integer,
+  salarydate LocalDate,
+  amountrecd Integer
+}
+
+relationship OneToMany {
+  Employee to SalaryTx
+}
+
+entity Shift{
+  modificationCounter Integer,
+  shiftName String required,
+  shortName String,
+  startTime String,
+  endTime String,
+  breakDuration String,
+  workhoursHalfDay String,
+  workhoursFullDay String,
+  graceTimeLateIn Integer,
+  graceTimeEarlyOut Integer
+}
+
+relationship OneToMany {
+  Organization to Shift
+}
+
+entity OverTimeSetting{
+  modificationCounter Integer,
+  applicable Boolean,
+  minOverTimeHours Integer,
+  description String
+}
+
+relationship OneToOne {
+  Shift to OverTimeSetting
+}
+
+entity AttendancePolicyNotification{
+  notificationDescription String,
+  notificationRequired Boolean,
+  notificationType String
+}
+
+relationship OneToOne {
+  Shift to AttendancePolicyNotification
+}
+entity LeaveSetting{
+  modificationCounter Integer,
+  leaveType String required,
+  shortName String required,
+  leaveLimit String required,
+  carryForward Integer required,
+  applicableTo String,
+  paidLeave Boolean
+}
+
+relationship OneToMany {
+  Organization to LeaveSetting
+}
+entity LeaveApproval{
+  modificationCounter Integer,
+  leaveType String required,
+  paidleave String required,
+  fromDate LocalDate required,
+  toDate LocalDate required,
+  hours Integer required,
+  remarks String required,
+  notficationRequired Boolean
+}
+relationship OneToMany {
+  Employee to LeaveApproval
+}
+
+entity Holiday{
+  modificationCounter Integer,
+  holidayName String required,
+  holidayDate LocalDate required,
+  holidayType String required
+}
+
+relationship OneToMany {
+  Organization to Holiday
+}
+
+entity Attendance{
+  modificationCounter Integer,
+  firstIn Integer,
+  lastOut Integer,
+  inSwipes String,
+  outSwipes String,
+  workingHours Integer,
+  outSideHours Integer,
+  overtime Integer,
+  status String
+}
+
+relationship OneToOne {
+  Employee to Attendance
+}
+

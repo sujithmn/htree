@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.9.xsd">
+
+    <property name="now" value="now()" dbms="h2"/>
+    <property name="now" value="now()" dbms="mysql, mariadb"/>
+
+    <property name="floatType" value="float4" dbms="postgresql, h2"/>
+    <property name="floatType" value="float" dbms="mysql, oracle, mssql, mariadb"/>
+    <property name="clobType" value="clob" dbms="h2"/>
+    <property name="clobType" value="clob" dbms="mysql, oracle, mssql, mariadb, postgresql"/>
+    <property name="uuidType" value="varchar(36)" dbms="h2, mysql, mariadb"/>
+
+    <include file="config/liquibase/changelog/00000000000000_initial_schema.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20220127070427_added_entity_auth.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20220127070427_added_entity_Organization.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20220127070527_added_entity_Branch.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20220127070627_added_entity_Department.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20220127070727_added_entity_Designation.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20220127070827_added_entity_Locale.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20220127070927_added_entity_Employee.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20220127071027_added_entity_EmployeeAccessSetting.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20220127071127_added_entity_EmployeeShiftSetting.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20220127071227_added_entity_EmployeeLeaveTx.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20220127071327_added_entity_EmployeePayrollSetting.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20220127071427_added_entity_SalaryTx.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20220127071527_added_entity_Shift.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20220127071627_added_entity_OverTimeSetting.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20220127071727_added_entity_AttendancePolicyNotification.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20220127071827_added_entity_LeaveSetting.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20220127071927_added_entity_LeaveApproval.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20220127072027_added_entity_Holiday.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20220127072127_added_entity_Attendance.xml" relativeToChangelogFile="false"/>
+    <!-- jhipster-needle-liquibase-add-changelog - JHipster will add liquibase changelogs here -->
+    <include file="config/liquibase/changelog/20220127070527_added_entity_constraints_Branch.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20220127070627_added_entity_constraints_Department.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20220127070727_added_entity_constraints_Designation.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20220127070827_added_entity_constraints_Locale.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20220127070927_added_entity_constraints_Employee.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20220127071027_added_entity_constraints_EmployeeAccessSetting.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20220127071127_added_entity_constraints_EmployeeShiftSetting.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20220127071227_added_entity_constraints_EmployeeLeaveTx.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20220127071427_added_entity_constraints_SalaryTx.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20220127071527_added_entity_constraints_Shift.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20220127071827_added_entity_constraints_LeaveSetting.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20220127071927_added_entity_constraints_LeaveApproval.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20220127072027_added_entity_constraints_Holiday.xml" relativeToChangelogFile="false"/>
+    <!-- jhipster-needle-liquibase-add-constraints-changelog - JHipster will add liquibase constraints changelogs here -->
+    <!-- jhipster-needle-liquibase-add-incremental-changelog - JHipster will add incremental liquibase changelogs here -->
+</databaseChangeLog>

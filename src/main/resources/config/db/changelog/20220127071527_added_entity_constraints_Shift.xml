@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.9.xsd">
+    <!--
+        Added the constraints for entity Shift.
+    -->
+    <changeSet id="20220127071527-2" author="jhipster">
+        
+        <addForeignKeyConstraint baseColumnNames="over_time_setting_id"
+                                 baseTableName="shift"
+                                 constraintName="fk_shift_over_time_setting_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="over_time_setting"/>
+
+        <addForeignKeyConstraint baseColumnNames="attendance_policy_notification_id"
+                                 baseTableName="shift"
+                                 constraintName="fk_shift_attendance_policy_notification_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="attendance_policy_notification"/>
+
+        <addForeignKeyConstraint baseColumnNames="organization_id"
+                                 baseTableName="shift"
+                                 constraintName="fk_shift_organization_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="organization"/>
+
+    </changeSet>
+</databaseChangeLog>
